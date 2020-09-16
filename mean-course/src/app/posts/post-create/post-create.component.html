@@ -1,0 +1,30 @@
+<form (submit)="onSavePost(postForm)" #postForm="ngForm">
+  <mat-card>
+    <mat-form-field>
+      <input matInput type="text" name="title"
+             [ngModel] = "post.title"
+             required
+             minlength="3"
+             placeholder="Title"
+             #title="ngModel"
+              >
+      <mat-error *ngIf="title.invalid">Title must be longer than 3 characters.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput row="6"
+                ngModel
+                name ="content"
+                required
+                [ngModel] = "post.content"
+                placeholder="Content"
+                #content="ngModel">
+      </textarea>
+      <mat-error *ngIf="content.invalid">Please enter content</mat-error>
+    </mat-form-field>
+
+    <button
+      mat-raised-button color='accent'
+      type="submit">Save Post</button>
+  </mat-card>
+</form>
+
